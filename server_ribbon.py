@@ -16,7 +16,7 @@ url = "http://localhost:8000/temp.csv"
 
 f = urllib.request.urlopen(url)
 #f = open("log_20221218_2000.txt", "r")
-spectra=np.loadtxt(f, delimiter=',')
+spectra=np.loadtxt(f, delimiter=',', skiprows=1)
 
 traces = []
 y_raw = spectra[:, 0] # wavelength
