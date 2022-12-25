@@ -25,6 +25,7 @@ fig.add_trace(go.Scatter(x = df['time'], y = df['69'], name='A15 Tempeh'))
 
 
 fig.update_layout( plot_bgcolor='rgb(230, 230,230)',
+    margin=dict(l=1, r=1, t=1, b=1),
                    showlegend=True)
 
 fig.show()
