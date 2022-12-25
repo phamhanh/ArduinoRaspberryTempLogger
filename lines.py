@@ -24,8 +24,7 @@ fig.add_trace(go.Scatter(x = df['time'], y = df['68'], name='A14'))
 fig.add_trace(go.Scatter(x = df['time'], y = df['69'], name='A15 Tempeh'))
 
 
-fig.update_layout(title='Tempeh',
-                   plot_bgcolor='rgb(230, 230,230)',
+fig.update_layout( plot_bgcolor='rgb(230, 230,230)',
                    showlegend=True)
 
 fig.show()
@@ -37,7 +36,12 @@ fig.show()
 
 app = dash.Dash()
 app.layout = html.Div([
-    dcc.Graph(figure=fig)
+    dcc.Graph(figure=fig),
+    dcc.Interval(
+            id='interval-component',
+            interval=300*1000, # in milliseconds
+            n_intervals=0
+        )
 ])
 
 app.run_server(debug=True, use_reloader=True) 
