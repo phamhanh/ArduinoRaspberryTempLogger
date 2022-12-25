@@ -18,7 +18,8 @@ print("Press Ctrl+C to save and stop the logging")
 baud_rate = 9600  #  In arduino, Serial.begin(baud_rate), e.g. 115200
 default = time.strftime("temp_%Y%m%d_%H%M.csv")
 default_link = "temp.csv"
-serial_port = '/dev/tty.usbserial-14330'  #  listening port, type ls /dev/ttyUSB* in shell for available ports
+#serial_port = '/dev/tty.usbserial-14330'  #  listening port, type ls /dev/ttyUSB* in shell for available ports
+serial_port = '/dev/ttyUSB0'  #  listening port, type ls /dev/ttyUSB* in shell for available ports
 if len(sys.argv) == 2:
     logfile_name = sys.argv[1]
 else:
