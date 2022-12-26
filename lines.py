@@ -6,8 +6,15 @@ from dash import html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
+import webbrowser
+from threading import Timer
 
 app = dash.Dash()
+port = 8050
+
+def open_browser():
+	webbrowser.open_new("http://localhost:{}".format(port))
+
 app.layout = html.Div([
     dcc.Graph(id='live-graph'),
     dcc.Interval(
@@ -23,6 +30,7 @@ app.layout = html.Div([
 )
 def update_graph_scatter(n):
     df = pd.read_csv('temp.csv')
+    df['time'] = pd.to_datetime(df['time'],unit='m')
 
     fig = go.Figure(go.Scatter(x = df['time'], y = df['54'], name='A0'))
     #fig.add_trace(go.Scatter(x = df['time'], y = df['55'], name='A1'))# Faulty Sensor
@@ -44,10 +52,18 @@ def update_graph_scatter(n):
 
     fig.update_layout(  plot_bgcolor='rgb(230, 230,230)',
                         margin=dict(l=1, r=1, t=1, b=1),
+                        uirevision=True,
                         showlegend=True)
 
     fig.update_layout(yaxis=dict(range=[5,30]))
+    
+    fig.update_xaxes(
+        tickformat="%-H:%M\nDay %e",
+        tickformatstops=[
+            dict(dtickrange=[60, 1440], value="%H:%M")]  # range is 1 hour to 24 hours
+)
     return fig
 
 if __name__ == '__main__':
+    Timer(1, open_browser).start();
     app.run_server(debug=True, use_reloader=True) 
