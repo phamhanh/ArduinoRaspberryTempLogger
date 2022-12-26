@@ -46,7 +46,7 @@ try:
         else:
             continue
             #  print("\nnothing here")
-        if count >= 10:             #  to save file to disk every 10 lines
+        if count >= 1:             #  to save file to disk every 1 lines
             output_file.close()
             output_file = open(logfile_name, "a+")
             count = 0
