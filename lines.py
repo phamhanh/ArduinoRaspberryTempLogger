@@ -59,11 +59,9 @@ def update_graph_scatter(n):
     
     fig.update_xaxes(
         tickformat="%-H:%M\nDay %e",
-        tickformatstops=[
-            dict(dtickrange=[60, 1440], value="%H:%M")]  # range is 1 hour to 24 hours
-)
+    )
     return fig
 
 if __name__ == '__main__':
     Timer(1, open_browser).start();
-    app.run_server(debug=True, use_reloader=True) 
+    app.run_server(debug=True, use_reloader=True, host='0.0.0.0') 
