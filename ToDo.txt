@@ -1,0 +1,14 @@
+Clean Fridge
+Place sensors
+
+Calibrate sensors
+A2, A6, A14????
+
+Upload Arduino
+
+
+Calibrate PID
+
+Make tempeh in trays
+
+remove bottom of metal rack
