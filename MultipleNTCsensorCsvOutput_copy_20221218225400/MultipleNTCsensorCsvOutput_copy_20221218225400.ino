@@ -7,8 +7,8 @@ unsigned long nextUpdate;
 #define PERIOD 1*60*1000L ;
 
 float temp = 0;
-int tempPins[] = {        A0, A1,  A2, A3,   A4,   A5,  A6, A7,   A8,   A9,  A10, A11, A12,  A13, A14, A15};       
-float tempAdjustment[] = { 0,  0, 7.4,  0,  0.2, -0.1, 4.1,  0, -0.3, -0.2, -0.1,   0, 0.2, -0.1, 4.5, 0.2};       
+int tempPins[] = {           A0,   A1,   A2,   A3, A4,   A5,   A6,  A7,   A8,   A9,  A10,   A11, A12,  A13,  A14, A15};       
+float tempAdjustment[] = { -0.1,  0.1, 17.3,  0.1,  0,  0.1, 22.5, 0.1, -0.4, -0.2, -0.3,  -0.1, 0.2, -0.1, 17.8,   0};  
 
 //Total Amount of sensors, order in array above
 int pinCount = 16;     

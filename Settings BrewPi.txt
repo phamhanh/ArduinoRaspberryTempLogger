@@ -1,0 +1,23 @@
+Settings
+Cooling overshoot estimator 63.998
+Heating overshoot estimator 35.395
+PID: Kp 2
+PID: Ki 0.75
+PID: Kd 0.2
+
+Integrator: maximum temp error °C 1.5
+Temperature idle range top 0.25
+Temperature idle range bottom -0.25
+Heating target upper bound 0.2
+Heating target lower bound -0.2
+Cooling target upper bound 0.1
+Cooling target lower bound -0.2
+
+Maximum time in seconds for heating overshoot estimator 600
+Maximum time in seconds for cooling overshoot estimator 1200
+
+Beer fast filter delay time 78s
+Beer slow filter delay time 318s
+Beer slope filter delay time 32min
+Fridge fast filter delay time 18s
+Fridge slow filter delay time 159s
