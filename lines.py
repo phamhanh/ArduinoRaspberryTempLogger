@@ -54,7 +54,7 @@ def update_graph_scatter(n):
                         uirevision=True,
                         showlegend=True)
 
-    fig.update_layout(yaxis=dict(range=[5,30]))
+    #fig.update_layout(yaxis=dict(range=[5,30]))
     
     fig.update_xaxes(
         tickformat="%-H:%M\nDay %e",
