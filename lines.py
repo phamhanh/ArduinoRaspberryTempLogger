@@ -32,23 +32,22 @@ def update_graph_scatter(n):
     df = pd.read_csv('temp.csv')
     df['time'] = pd.to_datetime(df['time'],unit='m')
 
-    fig = go.Figure(go.Scatter(x = df['time'], y = df['54'], name='A0'))
-    #fig.add_trace(go.Scatter(x = df['time'], y = df['55'], name='A1'))# Faulty Sensor
-    fig.add_trace(go.Scatter(x = df['time'], y = df['57'], name='A3'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['56'], name='A2 Cooler')) 
-    fig.add_trace(go.Scatter(x = df['time'], y = df['58'], name='A4 Heater'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['59'], name='A5'))
-    #fig.add_trace(go.Scatter(x = df['time'], y = df['60'], name='A6')) # Faulty Sensor
-    #fig.add_trace(go.Scatter(x = df['time'], y = df['61'], name='A7')) # Faulty Sensor
-    fig.add_trace(go.Scatter(x = df['time'], y = df['62'], name='A8'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['63'], name='A9'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['64'], name='A10'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['65'], name='A11'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['66'], name='A12'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['67'], name='A13'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['68'], name='A14'))
-    fig.add_trace(go.Scatter(x = df['time'], y = df['69'], name='A15 Tempeh'))
-
+    fig = go.Figure(go.Scatter(x = df['time'], y = df['54'], name='A0 Tempeh Middle'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['55'], name='A1 Air Tempeh Top Left Back'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['56'], name='? A2 Air Behind Fridge')) 
+    fig.add_trace(go.Scatter(x = df['time'], y = df['57'], name='A3 Air Tempeh Middle Middle'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['58'], name='A4 Air Middle in Room'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['59'], name='A5 Fridge'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['60'], name='? A6 Air Top Room')) 
+    fig.add_trace(go.Scatter(x = df['time'], y = df['61'], name='A7 Heater')) 
+    fig.add_trace(go.Scatter(x = df['time'], y = df['62'], name='A8 Tempeh Top Right'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['63'], name='A9 Tempeh Middle Right'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['64'], name='A10 Air Tmpeh Right Bottom'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['65'], name='A11 Tempeh Bottom Right'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['66'], name='A12 Tempeh Top Left'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['67'], name='a13 Tempeh Middle Left'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['68'], name='? A14 Top Left Air Front'))
+    fig.add_trace(go.Scatter(x = df['time'], y = df['69'], name='A15 Tempeh Bottom Left'))
 
     fig.update_layout(  plot_bgcolor='rgb(230, 230,230)',
                         margin=dict(l=1, r=1, t=1, b=1),
