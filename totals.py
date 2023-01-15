@@ -90,6 +90,7 @@ def update_graph_scatter(n):
     #Faulty sensor, remove column A14 Top Left Front from df
     df = df.drop(columns=['TL A14 Air Top Left Front'])
 
+
     #Create a figure
     fig_air = go.Figure()
 
@@ -148,6 +149,7 @@ def update_graph_scatter(n):
     for column in df:
         if '- Heat' in column:
             fig_heat.add_trace(go.Scatter(x = df['time'], y = df[column], name=column, line_shape='spline',line_smoothing=1.3))
+    fig_heat.update_layout(legend={'traceorder':'normal'})
 
             
 
@@ -157,18 +159,12 @@ def update_graph_scatter(n):
         if column != 'time':
             #convert column to numeric
             df[column + 'sum'] = df[column].sum(numeric_only=True)
-    #create new column in df that is the average of all the columns with sum in the name
-    df['average']=df.filter(regex='sum').mean(numeric_only=True,axis=1)
-
 
     #loop over every column in df with sum in the name
     for column in df.filter(regex='sum'):
-        #create new column in df that is the column divided by the average times 100
-        df[column + ' % of Average'] = df[column] / df['average'] * 100
-        #create new column in df that is the column divided by 72000 times 100
+        #create new column in df that is the column divided by 72000 times 100. 72.000 is 48 hours of 25C (25 * 48 * 60)
         df[column + ' % Done' ] = df[column] / 72000 * 100
     #Find all colums with % in the name and rename to remove sum
-    df = df.rename(columns=lambda x: x.replace('sum % of Average', ' % of Average'))
     df = df.rename(columns=lambda x: x.replace('sum % Done', ' % Done'))
 
     df_last = df.tail(1)
@@ -191,27 +187,6 @@ def update_graph_scatter(n):
                                 marker_line_width=1.5, 
                                 opacity=0.6))
 
-    print_full(df_last.filter(regex='Average'))
-
-    #Repeat for average
-    x_average=[]
-    y_average=[]
-    for column in df_last.filter(regex='Tempeh'):
-        if 'Average' in column and not 'Heat' in column:
-            x_average.append(column)
-            y_average.append(df_last[column].values[0])
-    fig_average = go.Figure(go.Bar(x=x_average, y=y_average))
-
-    #Repeat for sum
-    x_sum=[]
-    y_sum=[]
-    for column in df_last.filter(regex='sum'):
-        #Not Average or Done in column name
-        if 'Average' not in column and 'Done' not in column and not 'Heat' in column:
-            x_sum.append(column)
-            y_sum.append(df_last[column].values[0])
-    fig_sum = go.Figure(go.Bar(x=x_sum, y=y_sum))
-    print_full(df_last.filter(regex='sum'))
 
     #create x_heat, y_heat and calculate sum of df for columns with heat in name, create a bar graph with x_heat and y_heat
     x_heat=[]
@@ -221,10 +196,6 @@ def update_graph_scatter(n):
             x_heat.append(column)
             y_heat.append(df[column].sum())
     fig_heat_sum = go.Figure(go.Bar(x=x_heat, y=y_heat))
-
-
-
-
 
     #Return the figure
     return fig_tempeh, fig_room, fig_air, fig_heat, fig_done, fig_heat_sum
